@@ -1,24 +1,30 @@
 import Conta from './entities/Conta';
-import Pagamento from './entities/Pagamento';
+import PagamentoBoleto from './entities/PagamentoBoleto';
+import PagamentoCartao from './entities/PagamentoCartao';
 
-const contaEriberto = new Conta(1000);
+const contaEriberto = new Conta(1000, '837.530.823-41');
 
-const contaSpotify = new Conta(50000);
+const contaAgiota = new Conta(50000, '657.326.803-22');
 
-const pagamentoSpotify = new Pagamento(30, new Date('2023-03-22'));
+const contaSorveteria = new Conta(3000, '837.530.823-51');
 
-console.log('Antes da transação:', contaEriberto, contaSpotify);
+const pagamentoAgiota = new PagamentoBoleto(
+  30,
+  new Date('2023-03-22'),
+  contaEriberto,
+  contaAgiota,
+);
 
-const transacao = (
-  pagador: Conta,
-  recebedor: Conta,
-  pagamento: Pagamento,
-) => {
-  const valorDaMensalidade = pagamento.getValorFinal();
-  pagador.debitar(valorDaMensalidade);
-  recebedor.creditar(valorDaMensalidade);
-};
+const pagamentoSorvete = new PagamentoCartao(
+  31, 
+  contaEriberto,
+  contaSorveteria,
+);
 
-transacao(contaEriberto, contaSpotify, pagamentoSpotify);
+const codigoDePagamento = pagamentoAgiota.efetivar();
 
-console.log('Depois da transação:', contaEriberto, contaSpotify);
+pagamentoSorvete.efetivar();
+
+console.log(codigoDePagamento);
+
+console.log(contaEriberto, pagamentoSorvete.efetivar());

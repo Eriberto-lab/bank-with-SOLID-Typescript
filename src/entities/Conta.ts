@@ -1,8 +1,12 @@
+import Cpf from './Cpf';
+
 class Conta {
   private _saldo: number;
+  private _cpf: Cpf;
 
-  constructor(s: number) {
-    this._saldo = s;
+  constructor(saldoInicial: number, cpf: string) {
+    this._saldo = saldoInicial;
+    this._cpf = new Cpf(cpf);
   }
 
   public getSaldo(): number {

@@ -1,19 +1,23 @@
-class Pagamento {
-  private _valor: number;
-  private _vencimento: Date;
+import crypto from 'crypto';
+import Conta from './Conta';
 
-  constructor(valor:number, vencimento: Date) {
+class Pagamento {
+  protected _valor: number;
+  protected _origem: Conta;
+  protected _destino: Conta;
+
+  constructor(
+    valor:number,    
+    origem: Conta,
+    destino: Conta,
+  ) {
     this._valor = valor;
-    this._vencimento = vencimento;
+    this._origem = origem;
+    this._destino = destino;
   }
 
-  public getValorFinal(): number {
-    const hoje = new Date().getTime();
-
-    if (hoje > this._vencimento.getTime()) {
-      return this._valor * 1.2;
-    }
-    return this._valor;
+  protected gerarCodigo(): string {
+    return `${new Date().getTime()}-${crypto.randomUUID()}`;
   }
 }
 
