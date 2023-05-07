@@ -1,7 +1,8 @@
+import IPagamentoEfetivavel from '../interfaces/IpagamentoEfetivavel';
 import Conta from './Conta';
 import Pagamento from './Pagamento';
 
-class PagamentoBoleto extends Pagamento {
+class PagamentoBoleto extends Pagamento implements IPagamentoEfetivavel {
   private _vencimento: Date;
 
   constructor(
