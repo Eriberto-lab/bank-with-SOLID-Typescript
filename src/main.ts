@@ -1,6 +1,9 @@
+/* eslint-disable no-restricted-syntax */
 import Conta from './entities/Conta';
+// import Pagamento from './entities/Pagamento';
 import PagamentoBoleto from './entities/PagamentoBoleto';
 import PagamentoCartao from './entities/PagamentoCartao';
+import IPagamentoEfetivavel from './interfaces/IpagamentoEfetivavel';
 
 const contaEriberto = new Conta(1000, '837.530.823-41');
 
@@ -21,10 +24,11 @@ const pagamentoSorvete = new PagamentoCartao(
   contaSorveteria,
 );
 
-const codigoDePagamento = pagamentoAgiota.efetivar();
+const efetivarPagamentos = (pagamentos: IPagamentoEfetivavel[]): void => {     
+  for (const pagamento of pagamentos) {
+    const codigo = pagamento.efetivar();
+    console.log(codigo, 'Pagamento efetuado!');
+  }
+};
 
-pagamentoSorvete.efetivar();
-
-console.log(codigoDePagamento);
-
-console.log(contaEriberto, pagamentoSorvete.efetivar());
+efetivarPagamentos([pagamentoAgiota, pagamentoSorvete]);
