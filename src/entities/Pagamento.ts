@@ -16,7 +16,7 @@ abstract class Pagamento {
     this._destino = destino;
   }
 
-  protected gerarCodigo(): string {
+  protected static gerarCodigo(): string {
     return `${new Date().getTime()}-${crypto.randomUUID()}`;
   }
 

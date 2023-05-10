@@ -18,7 +18,7 @@ class PagamentoPix extends Pagamento {
   public efetivar(): string {
     this._origem.debitar(this._valor);
     this._destino.creditar(this._valor);
-    return `${super.gerarCodigo()}-${this._chave}`;
+    return `${Pagamento.gerarCodigo()}-${this._chave}`;
   }
 }
 

@@ -30,7 +30,7 @@ class PagamentoBoleto extends Pagamento {
     const valorDaMensalidade = this.getValorFinal();
     this._origem.debitar(valorDaMensalidade);
     this._destino.creditar(valorDaMensalidade);
-    return this.gerarCodigo();
+    return Pagamento.gerarCodigo();
   }
 }
 
