@@ -14,6 +14,8 @@ const contaSorveteria = new Conta(3000, '837.530.823-51');
 
 const contaBanco = new Conta(800000000000, '397.326.803-22');
 
+contaEriberto.creditar(10000);
+
 const pagamentoAgiota = new PagamentoBoleto(
   30,
   new Date('2023-03-22'),
