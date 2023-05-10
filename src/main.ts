@@ -43,4 +43,4 @@ const efetivarPagamentos = (pagamentos: IPagamentoEfetivavel[]): void => {
   }
 };
 
-efetivarPagamentos([pagamentoAgiota, pagamentoSorvete, pagamentoCarro]);
+efetivarPagamentos([pagamentoAgiota, pagamentoSorvete]);

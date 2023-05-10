@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import Conta from './Conta';
 
-class Pagamento {
+abstract class Pagamento {
   protected _valor: number;
   protected _origem: Conta;
   protected _destino: Conta;
@@ -19,6 +19,8 @@ class Pagamento {
   protected gerarCodigo(): string {
     return `${new Date().getTime()}-${crypto.randomUUID()}`;
   }
+
+  abstract efetivar(): string;
 }
 
 export default Pagamento;

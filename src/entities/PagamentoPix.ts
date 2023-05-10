@@ -1,8 +1,8 @@
-import IPagamentoEfetivavel from '../interfaces/IpagamentoEfetivavel';
+// import IPagamentoEfetivavel from '../interfaces/IpagamentoEfetivavel';
 import Conta from './Conta';
 import Pagamento from './Pagamento';
 
-class PagamentoPix extends Pagamento implements IPagamentoEfetivavel {
+class PagamentoPix extends Pagamento {
   private _chave: string;
 
   constructor(
