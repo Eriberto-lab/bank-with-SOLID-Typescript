@@ -11,6 +11,13 @@ class ContaPoupanca extends Conta {
   getRendimentoAnual(): number {
     return this.getSaldo() * 0.2;
   }
+
+  public debitar(valor: number): void {
+    if (valor > this._saldo) {
+      throw new Error('SALDO_INSUFICIENTE');
+    }
+    this._saldo -= valor;
+  }
 }
 
 export default ContaPoupanca;

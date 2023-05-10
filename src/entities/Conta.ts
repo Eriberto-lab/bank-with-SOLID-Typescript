@@ -1,7 +1,7 @@
 import Cpf from './Cpf';
 
-class Conta {
-  private _saldo: number;
+abstract class Conta {
+  protected _saldo: number;
   private _cpf: Cpf;
 
   constructor(saldoInicial: number, cpf: string) {
@@ -13,17 +13,11 @@ class Conta {
     return this._saldo;
   }
 
-  public debitar(value: number): void {
-    if (value > this._saldo) {
-      throw new Error('saldo insuficiente');
-    } else {
-      this._saldo -= value;
-    }
-  }
+  abstract debitar(valor: number): void;
 
   public creditar(value: number): void {
     this._saldo += value;
   }
-}
+} 
 
 export default Conta;
